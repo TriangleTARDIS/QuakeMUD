@@ -1,0 +1,112 @@
+((caller == #0) || (caller == this)) || raise(E_PERM);
+this:welcome();
+gotopwd = 0;
+while main (1)
+  if (!gotopwd)
+    set_connection_option(player, "binary", 1);
+    notify(player, "By what name do you wish to be known? ");
+    set_connection_option(player, "binary", 0);
+    name = tostr(read(player));
+  endif
+  candidate = this:_match_player(name);
+  
+  if (valid(candidate))
+    if (`is_clear_property(candidate, "password") ! E_PROPNF' || 
+            (!$object_utils:isa(candidate, $player)))
+      notify(player,"That character is hosed.");
+      return 0;
+    endif
+    if (typeof(cp = candidate.password) == STR)
+      set_connection_option(player, "binary", 1);
+      notify(player, "Please enter your password: ");
+      set_connection_option(player, "binary", 0);
+      set_connection_option(player, "client-echo", 0);
+      password = tostr(read(player));
+      set_connection_option(player, "client-echo", 1);
+    elseif (cp == 0)
+      "doesn't need a password";
+      return candidate;
+    else
+      "dunno... ask again";
+    endif
+  else
+    "new player... create";
+    player:tell("\"",name,"\" is a new character.");
+    while (!index(yes,this:prompt_read("Is this really the name you wish to 
+use? (y(es) or n(o)):")))
+      name = this:prompt_read("Ok, please reenter it then: ");
+      if (valid(candidate = this:_match_player(name))
+        gotopwd = 1;
+        continue main;       
+      else        
+       notify(player,tostr("\"",name,"\" is a new character.");
+      endif
+    endwhile
+    
+    
+      notify(player,"");
+      notify(player,"Enjoy.");
+      notify(player,"");
+      notify(player,"Please enter a unique password for your character. 
+Do not use the password you use on your computer account, and please do 
+not use any word that appears in the dictionary.");
+      notify(player,"");
+      pw1 = this:prompt_read("");
+      pw2 = this:prompt_read("Please reenter your password to confirm:",1); 
+      if (pw1 != pw2)
+        notify(player,"Sorry, the passwords have to match.");
+        pw1 = this:prompt_read("Please enter your character's password: ");
+        pw2 = this:prompt_read("Please reenter your password to confirm: ");
+        if (pw != pw2)
+           notify(player,"You have taken too many tries.");
+           boot_player(player);
+        endif
+      endif
+      notify(player,"");
+      notify(player,"Your gender can be male or female.");
+      gender = this:prompt_read("Please enter your gender: ");
+      if (gender == "male" || gender == "female")
+        notify(player,"Unknown, defaulting to male.");
+        gender = "male";
+      endif     
+     email = this:prompt_read("Enter a valid email address: ");
+     real_name = this:promp_read("Please enter your real name: ");
+     newp = this:create(name,password,gender,email,real_name);
+     notify(player,"");
+     notify(player,"        [You have been granted automatic builder status]");
+  endif
+endwhile
+
+
+
+
+
+
+
+
+
+
+Current users: Shadow.
+
+By what name do you wish to be known? 
+"Shadowtest" is a new character.
+Is this really the name you wish to use? (y(es) or n(o)): 
+
+Enjoy.
+
+Please enter a unique password for your character. Do not use
+the password you use on your computer account, and please do not use
+any word that appears in the dictionary.
+
+Please reenter your password to confirm: 
+
+Your gender can be male or female.
+Please enter your gender: Enter a valid email address: Please enter your real name: 
+	[You have been granted automatic wizard status]
+##########################################################################
+##########################################################################
+
+Welcome to QuakeMUD! Be sure to read the general board for changes and
+other notes of interest. The QuakeMUD webpage (with links to all clan
+webpages of QuakeMUD members) is located at:
+
