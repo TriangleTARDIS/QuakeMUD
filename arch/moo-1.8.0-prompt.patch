@@ -1,0 +1,262 @@
+This is the prompt patch for LambdaMOO-1.8.0p5 written by Ahn, Jin-su
+(jsahn@ee.snu.ac.kr). Version 1.0.
+
+This patch installs two new options to connection_options:
+
+"prompt": if true, enables call to #0:do_prompt_task. The server passes
+	two arguments to :do_prompt_task. args[1] is the user to be prompted
+	and args[2] has true value iff there is some read()ing task on the
+	user's task queue.
+
+"prompt-while-read()ing": if false, the server never calls :do_prompt_task
+	while read()ing. 
+
+Use standard unix `patch' utility in your LambdaMOO-1.8.0p5 directory.
+
+======= Begin PatchFile =======
+*** server.c	1996/08/07 09:10:54	1.1
+--- server.c	1996/08/10 03:17:55
+***************
+*** 50,55 ****
+--- 50,56 ----
+  
+  static pid_t		parent_pid;
+  int			in_child = 0;
++ static int		in_prompt_phase = 0;
+  
+  static const char      *shutdown_message = 0;	/* shut down if non-zero */
+  static int		in_emergency_mode = 0;
+***************
+*** 73,78 ****
+--- 74,82 ----
+      int			disconnect_me;
+      int			outbound, binary;
+      int 		print_messages;
++     int			need_prompt;
++     int			need_newline;
++     int			prompt_while_reading;
+  } shandle;
+  
+  static shandle	*all_shandles = 0;
+***************
+*** 423,428 ****
+--- 427,459 ----
+  }
+  
+  static void
++ run_prompt_tasks(void)
++ {
++     shandle    *h;
++ 
++     for (h = all_shandles; h; h = h->next)
++ 	if (h->need_prompt > 0) {
++ 	    Var		arg = new_list(2);
++ 	    Var		v;
++ 	    int		now_reading = is_reading(h->tasks);
++ 
++ 	    v.type = TYPE_INT;
++ 	    v.v.num = 0;
++ 	    arg.v.list[1].type = TYPE_OBJ;
++ 	    arg.v.list[1].v.obj = h->player;
++ 	    arg.v.list[2].type = TYPE_INT;
++ 	    arg.v.list[2].v.num = now_reading;
++ 
++ 	    if (!now_reading || h->prompt_while_reading)
++ 		run_server_task(-1, h->listener, "do_prompt_task", arg, "",
++ 				&v);
++ 	    h->need_newline = is_true(v);
++ 	    h->need_prompt = 0;
++ 	    free_var(v);
++ 	}
++ }
++ 
++ static void
+  main_loop(void)
+  {
+      int	i;
+***************
+*** 478,485 ****
+  	    db_flush(FLUSH_ONE_SECOND);
+  	else
+  	    db_flush(FLUSH_IF_FULL);
+! 	
+  	run_ready_tasks();
+  
+  	{ /* Get rid of old un-logged-in or useless connections */
+  	    int	now = time(0);
+--- 509,518 ----
+  	    db_flush(FLUSH_ONE_SECOND);
+  	else
+  	    db_flush(FLUSH_IF_FULL);
+! 
+! 	in_prompt_phase = 1;	
+  	run_ready_tasks();
++ 	in_prompt_phase = 0;
+  
+  	{ /* Get rid of old un-logged-in or useless connections */
+  	    int	now = time(0);
+***************
+*** 528,533 ****
+--- 561,568 ----
+  		    }
+  	    }
+  	}
++ 
++ 	run_prompt_tasks();
+      }
+  
+      oklog("SHUTDOWN: %s\n", shutdown_message);
+***************
+*** 573,578 ****
+--- 608,623 ----
+  	return 1;
+      }
+  
++     if (!mystrcasecmp(option, "prompt-while-read()ing")) {
++ 	h->prompt_while_reading = is_true(value);
++ 	return 1;
++     }
++ 
++     if (!mystrcasecmp(option, "prompt")) {
++ 	h->need_prompt = is_true(value) ? 0 : INT32_MIN;
++ 	return 1;
++     }
++ 
+      return 0;
+  }
+  
+***************
+*** 585,590 ****
+--- 630,647 ----
+  	return 1;
+      }
+  
++     if (!mystrcasecmp(option, "prompt-while-read()ing")) {
++ 	value->type = TYPE_INT;
++ 	value->v.num = h->prompt_while_reading;
++ 	return 1;
++     }
++ 
++     if (!mystrcasecmp(option, "prompt")) {
++ 	value->type = TYPE_INT;
++ 	value->v.num = (h->need_prompt >= 0);
++ 	return 1;
++     }
++ 
+      return 0;
+  }
+  
+***************
+*** 599,604 ****
+--- 656,677 ----
+      pair.v.list[2].type = TYPE_INT;
+      pair.v.list[2].v.num = h->binary;
+  
++     list = listappend(list, pair);
++ 
++     pair = new_list(2);
++     pair.v.list[1].type = TYPE_STR;
++     pair.v.list[1].v.str = str_dup("prompt-while-read()ing");
++     pair.v.list[2].type = TYPE_INT;
++     pair.v.list[2].v.num = h->prompt_while_reading;
++ 
++     list = listappend(list, pair);
++ 
++     pair = new_list(2);
++     pair.v.list[1].type = TYPE_STR;
++     pair.v.list[1].v.str = str_dup("prompt");
++     pair.v.list[2].type = TYPE_INT;
++     pair.v.list[2].v.num = (h->need_prompt >= 0);
++ 
+      return listappend(list, pair);
+  }
+  
+***************
+*** 972,977 ****
+--- 1045,1054 ----
+      h->binary = 0;
+      h->print_messages = (!outbound && l->print_messages);
+  
++     h->need_prompt = INT32_MIN;	/* disables prompt */
++     h->need_newline = 0;
++     h->prompt_while_reading = 0;
++ 
+      if (!outbound)
+  	new_input_task(h->tasks, "");
+  
+***************
+*** 1003,1008 ****
+--- 1080,1087 ----
+  {
+      shandle    *h = (shandle *) sh.ptr;
+  
++     h->need_newline = 0;
++     h->need_prompt = (h->need_prompt >= 0) ? 1 : INT32_MIN;
+      h->last_activity_time = time(0);
+      new_input_task(h->tasks, line);
+  }
+***************
+*** 1514,1519 ****
+--- 1593,1603 ----
+  
+      r.type = TYPE_INT;
+      if (h && !h->disconnect_me) {
++ 	if (h->need_newline) {
++ 	    network_send_line(h->nhandle, "", 1);
++ 	    h->need_newline = 0;
++ 	}
++ 	h->need_prompt += in_prompt_phase;
+  	if (h->binary) {
+  	    int	length;
+  	    
+*** tasks.c	1996/08/07 09:10:54	1.1
+--- tasks.c	1996/08/10 02:54:04
+***************
+*** 602,607 ****
+--- 602,615 ----
+   * Exported interface
+   */
+  
++ int
++ is_reading(task_queue q)
++ {
++     tqueue     *tq = (tqueue *) q.ptr;
++ 
++     return (tq->reading != 0 || tq->program_stream != 0);
++ }
++ 
+  task_queue
+  new_task_queue(Objid player, Objid handler)
+  {
+*** config.h	1996/08/07 09:10:54	1.1
+--- config.h	1996/08/07 16:58:50
+***************
+*** 259,269 ****
+--- 259,271 ----
+     typedef int		int32;
+     typedef unsigned	unsigned32;
+  #  define INT32_MAX	INT_MAX
++ #  define INT32_MIN	INT_MIN
+  #else
+  #  if LONG_MAX == 2147483647
+       typedef long int		int32;
+       typedef unsigned long	unsigned32;
+  #    define INT32_MAX		LONG_MAX
++ #    define INT32_MIN		LONG_MIN
+  #  else
+  #    error I cannot figure out how to express a 32-bit integer on your machine.
+  #  endif
+*** tasks.h	1996/08/07 09:10:54	1.1
+--- tasks.h	1996/08/10 02:31:45
+***************
+*** 53,58 ****
+--- 53,60 ----
+  				 */
+  extern vm		find_suspended_task(int id);
+  
++ extern int		is_reading(task_queue tq);
++ 
+  /* External task queues:
+   *
+   * The registered enumerator should apply the given closure to every VM in the
+======= End of PatchFile =======

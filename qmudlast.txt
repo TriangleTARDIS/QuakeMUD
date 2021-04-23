@@ -1,0 +1,56 @@
+sample
+.me
+
+.others
+
+.modifier
+
+.verb
+
+.target
+
+.verb2
+
+-----
+ack2
+.me
+You go:
+----/|
+\ o,O|
+ =(-)=  ACK!!
+   U    THPHTH!!
+.others
+$N goes:
+----/|
+\ o,O|
+ =(-)=  ACK!!
+   U    THPHTH!!
+.end
+-----
+die
+.me
+$N $V.
+You have a strange feeling.
+You can see your own dead body from above.
+You are sucked away by the Force.
+Suddenly you are reincarnated as yourself.
+Strangely, nothing has changed.
+.others
+$N $V a horrible death, but is reincarnated instantly.
+.end
+-----
+smack/t
+.me
+You smack $n upside the head with a 2x4.
+.others
+$n attempts to duck at the danger ahead... but...
+smaaaaaaaaaaaAAAAAAAAACK!
+$N just smacked $n upside the head with a 2x4!
+.target
+Uh oh!
+$N sneaks up behind you and smacks you in the head with a 2x4!
+Ouch that hurt!
+
+You feel a bit dizzy.
+.end
+-----

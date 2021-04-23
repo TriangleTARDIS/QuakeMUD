@@ -1,0 +1,1092 @@
+-----
+?
+.me
+$N have a $m look on $P face.
+.others
+$N has a $m look on $P face.
+.modifier
+questioning
+.end
+-----
+?!
+.me
+You do NOT have a $m look on your face.
+.others
+$N does NOT have a $m look on $P face.
+.modifier
+questioning
+.end
+-----
+ack
+.me
+$N $V!
+.end
+-----
+ack2
+.me
+You go:
+----/|
+\ o,O|
+ =(-)=  ACK!!
+   U    THPHTH!!
+.others
+$N goes:
+----/|
+\ o,O|
+ =(-)=  ACK!!
+   U    THPHTH!!
+.end
+-----
+afk
+.me
+$N say, "I'll be away from the keyboard for a minute!"
+.others
+$N says, "I'll be away from the keyboard for a second!"
+.end
+-----
+agree/t
+.me
+You agree $m with $n
+.others
+$N agrees $m with $n
+.modifier
+wholeheartedly
+.end
+-----
+agree
+.me
+You agree $m
+.others
+$N agrees $m
+.modifier
+wholeheartedly
+.end
+-----
+ah
+.me
+You say 'ah'
+.others
+$N gets the idea in $P thick skull and gives an 'AH' of comprehension
+.end
+-----
+arc/t
+.me
+$N $V an eyebrow quizically at $n
+.others
+$N $V an eyebrow quizicallt at $n
+.target
+$N $V an eyebrow quizically at you
+.end
+-----
+arc
+.me
+$N $V an eyebrow
+.others
+$N $V an eyebrow
+.end
+-----
+argh
+.me
+$N $V the most horrifying ARGGGGH!!!!!
+.verb
+emit
+.end
+-----
+axe/t
+.me
+You axe-murder $n.
+.others
+$N axe-murders $n.
+.target
+$N axe-murders you.
+.end
+-----
+badtaste/t
+.me
+$N $V out a chainsaw and $W : Suck my spinning steel, Shithead!
+.verb
+pull
+.verb2
+shout
+.end
+-----
+barf/t
+.me
+You barf $m on $n
+.others
+$N barfs $m on $n
+.modifier
+noisily
+.end
+-----
+barf
+.me
+You barf $m
+.others
+$N barfs $m
+.modifier
+on $P shoes
+.end
+-----
+beep/t
+.me
+$N $V $n.
+.target
+$N $V $n.
+.end
+-----
+bite/t
+.me
+$N $V $n $M
+.modifier
+viciously
+.verb
+bite
+.end
+-----
+bite
+.me
+$N look for someone to bite
+.others
+Watch out, $N looks like $S's gonna bite someone
+.end
+-----
+boggle/t
+.me
+$N $V at the very concept of $n.
+.target
+$N boggles at you.
+.end
+-----
+boggle
+.me
+$N $V $m
+.modifier
+at the concept
+.end
+-----
+bonk/t
+.me
+$N $V $n $m
+.modifier
+on the head.
+.end
+-----
+bonk
+.me
+$N $V yourself on the head.
+.others
+$N $V $Oself on the head.
+.end
+-----
+boogie
+.me
+$N $V.
+.others
+$N's backstage $boogie sets your pants on fire!
+.end
+-----
+bop/t
+.me
+$N $V $n $m
+.modifier
+on the head
+.end
+-----
+bop
+.me
+$N $V $m
+.modifier
+to the beat
+.end
+-----
+bored
+.me
+$N are $M $V.
+.others
+$N is $m bored.
+.modifier
+extreemly
+.end
+-----
+bow/t
+.me
+$N $V to $n $M
+.end
+-----
+bow
+.me
+$N $V $M
+.modifier
+suavely
+.end
+-----
+brb
+.me
+$N $V: be right back
+.verb
+say
+.end
+-----
+brow
+.me
+You raise your eyebrow.
+.others
+$N raises an eyebrow.
+.end
+-----
+burp
+.me
+$N $V $m
+.modifier
+rudely
+.end
+-----
+cackle
+.me
+$N throw your head back and cackle $m
+.others
+$N throws $P head back and cackles $m
+.modifier
+with glee
+.end
+-----
+calvin
+.me
+You look like Calvin when he gets one of those plans.
+.others
+$N looks like Calvin when he gets one of those plans.
+.end
+-----
+chant
+.me
+$N $V chanting like a raving lunatic
+.verb
+begin
+.end
+-----
+cheer/t
+.me
+$N $V $m for $n
+.modifier
+enthusiastically
+.end
+-----
+cheer
+.me
+$N $V out a resounding cheer.
+.verb
+let
+.end
+-----
+chuckle/t
+.me
+You chuckle at $n $M
+.others
+$N chuckles at $n $M
+.target
+$N chuckles at you $M
+.end
+-----
+chuckle
+.end
+-----
+convulse
+.me
+$N $V to go into convulsions!
+.verb
+start
+.end
+-----
+cool
+.me
+$N $V $P thumb into the air and $W, "Cool"
+.verb
+put
+.verb2
+say
+.end
+-----
+cough
+.modifier
+noisily
+.end
+-----
+cower/t
+.me
+$N $V $m before $n
+.modifier
+in fear
+.end
+-----
+cower
+.me
+$N $V $m
+.modifier
+in fear
+.end
+-----
+cry/t
+.me
+$N $V $M on $n's shoulder
+.target
+$N $V $M on your shoulder
+.end
+-----
+cry
+.modifier
+like a baby
+.end
+-----
+dance/t
+.me
+$N $V the $m with $n
+.modifier
+waltz
+.end
+-----
+dance
+.me
+$N $V to a tune no one else hears
+.others
+$N $V to a tune only $S can hear
+.modifier
+to a tune $S can't hear
+.end
+-----
+die
+.me
+$N $V.
+You have a strange feeling.
+You can see your own dead body from above.
+You are sucked away by the Force.
+Suddenly you are reincarnated as yourself.
+Strangely, nothing has changed.
+.others
+$N $V a horrible death, but is reincarnated instantly.
+.end
+-----
+dive
+.me
+$N $V $m
+.modifier
+for cover
+.end
+-----
+doh
+.me
+You doh.
+.others
+$N dohs.
+.end
+-----
+drool/t
+.me
+$N $V all over $n
+.target
+$N $V all over you! Gross!
+.end
+-----
+drool
+.me
+$N $V $m
+.modifier
+on the floor most disgustingly
+.end
+-----
+duck
+.me
+$N $V for cover.
+.end
+-----
+duh
+.me
+$N go DUH!
+.others
+$N goes DUH!
+.end
+-----
+elaugh
+.me
+You laugh hard
+.others
+$N laughs so hard his sides split open and out pops a cute little puppy who pisses on your foot
+.end
+-----
+explode
+.me
+$N $V $m
+.modifier
+violently
+.end
+-----
+five/t
+.me
+$N $V up and $W $n a high-five!
+.verb
+jump
+.verb2
+give
+.end
+-----
+fooled_you
+.others
+Connection closed by foreign host
+.end
+-----
+frenzy/t
+.me
+$N $V down $n in a frenzied assault.  There is a welter of blood and limbs...
+.verb
+cut
+.end
+-----
+froth
+.me
+$N $V to froth at the mouth!
+.verb
+start
+.end
+-----
+frown/t
+.me
+You frown $M at $n.
+.others
+$N frowns $M at $n.
+.target
+$N frowns $M at you.
+.modifier
+unhapiily
+.end
+-----
+frown
+.me
+$N $V $M
+.modifier
+unhappily
+.end
+-----
+fuck
+.me
+$N go: FUCK!
+.others
+$N goes: FUCK!
+.end
+-----
+fuu
+.end
+-----
+gasp/t
+.me
+$N $V $m at $n!
+.modifier
+in astonishment
+.end
+-----
+gasp
+.me
+$N $V $m
+.modifier
+in astonishment!
+.end
+-----
+giggle/t
+.me
+You giggle at $n $M
+.others
+$N giggles at $n $M
+.target
+$N giggles at you $M
+.end
+-----
+grin/t
+.me
+You grin at $n $M
+.others
+$N grins at $n $M
+.target
+$N grins at you $M
+.end
+-----
+grin
+.me
+$N $V $M
+.modifier
+evilly.
+.end
+-----
+growl/t
+.me
+$N $V $m in $g direction
+.modifier
+menacingly
+.end
+-----
+growl
+.me
+You growl $M
+.others
+$N growls $M
+.modifier
+menacingly
+.end
+-----
+heh
+.me
+You grin, "Heh heh heh!"
+.others
+$N grins, "Heh heh heh!"
+.end
+-----
+hehe
+.me
+$N $V "hehehehe"
+.verb
+chuckle
+.end
+-----
+idle
+.me
+$N $V peacefully for a while...
+.verb
+sit
+.end
+-----
+jig
+.me
+You do a wild Yavish jig!
+.others
+$N does a wild Yavish jig!
+.end
+-----
+jump/t
+.me
+You jump up and down on $n.
+.others
+$N jumps up and down on $n.
+.target
+$N jumps up and down on you.
+.end
+-----
+jump
+.me
+$N $V $m
+.modifier
+up and down
+.end
+-----
+kick/t
+.me
+$N $V $n.
+.target
+$N kicks you.  Damn, that hurts!
+.end
+-----
+lag
+.me
+$N $V $P arms over $P head in slow motion, groaning "l  a   a    g!"
+.verb
+wave
+.end
+-----
+laugh/t
+.me
+You laugh $M at $n
+.others
+$N laughs $M at $n
+.target
+$N laughs $M at you
+.end
+-----
+laugh
+.end
+-----
+leer/t
+.me
+$N $V at $n $M
+.modifier
+lewdly.
+.end
+-----
+lol
+.me
+$N $V $m
+.modifier
+out loud
+.verb
+laff
+.end
+-----
+lurch/t
+.me
+$N $V towards $n
+.end
+-----
+mglint/t
+.me
+$N $V at $n with a mischievious glint in $P eyes
+.verb
+look
+.end
+-----
+mglint
+.me
+$N $V a mischievious glint in $P eyes.
+.verb
+get
+.end
+-----
+mgrin/t
+.me
+$N $V $m at $n
+.modifier
+mischievously
+.verb
+grin
+.end
+-----
+mgrin
+.me
+$N $V $m
+.modifier
+mischievously
+.verb
+grin
+.end
+-----
+mock/t
+.me
+$N $V $n $m
+.modifier
+outrageously
+.end
+-----
+monty/t
+.me
+$N $V "I wave my private parts at your auntie!" in a silly French
+accent at $n
+.target
+$N says "I wave my private parts at your auntie!" in a silly French
+accent at you.  Don't you think you should respond?
+.verb
+say
+.end
+-----
+monty
+.me
+You say "I wave my private parts at your auntie!" in a silly French accent
+at $n
+.others
+$N says "I wave my private parts at your auntie!" in a silly French
+accent at you.  Don't you think you should respond?
+.end
+-----
+monty2/t
+.me
+$N $V "Your mother was a hamster, and your father smells of
+ELDERBERRIES!" to $n
+.verb
+say
+.end
+-----
+monty2
+.me
+$N $V "Your mother was a hamster, and your father smelled of ELDERBERRIES!"
+.verb
+say
+.end
+-----
+mosh
+.me
+$N $V around the room $m
+.modifier
+violently
+.end
+-----
+mount
+.me
+$N $V $m
+.modifier
+and ride off into the sunset
+.end
+-----
+nod/t
+.end
+-----
+nod
+.end
+-----
+notbug
+.me
+You go:  That's not a bug, that's a feature!
+.others
+$N goes:  That's not a bug, that's a feature!
+.end
+-----
+noway
+.me
+$N go, "Nooooo waaaaaaaaay!"
+.others
+$N goes, "Nooooo waaaaaaaaay!"
+.end
+-----
+nut/t
+.me
+$N $V $n into a pool of bloodstained unconsciousness.
+.verb
+headbutt
+.end
+-----
+oif
+.me
+$N say "oif!"
+.others
+$N says "oif!"
+.end
+-----
+ok
+.me
+You nod and say, Okay.
+.others
+$N nods and says, Okay.
+.end
+-----
+oops
+.me
+$N go: OOPS!
+.others
+$N goes: OOPS!
+.end
+-----
+ouch
+.me
+$N $V in mock pain.
+.verb
+exclaim
+.end
+-----
+ow
+.me
+$N $V around on one foot and $W 'OW!'
+.verb
+hop
+.verb2
+yell
+.end
+-----
+puke/t
+.me
+$N $V in technicolor all over $n!
+.verb
+yawn
+.end
+-----
+puke
+.me
+$N $V chunks!
+.verb
+blow
+.end
+-----
+puzzle
+.me
+You look puzzled.
+.others
+$N looks puzzled.
+.end
+-----
+raise/t
+.me
+You $M raise an eyebrow at $n
+.others
+$N $M raises an eyebrow at $n
+.target
+$N $M raises an eyebrow at you
+.end
+-----
+raise
+.me
+$N $M $V an eyebrow.
+.end
+-----
+rape/t
+.me
+$N $V $n $M
+.end
+-----
+rape
+.me
+$N look desperate
+.others
+$N looks desperate
+.end
+-----
+rocket/t
+.me
+You whip out a rocket launcher and cause $n to erupt beautifully.
+.others
+$N whips out a rocket launcher and causes $n to erupt beautifully.
+.target
+$N whips out a rocket launcher and causes you to erupt beautifully.
+.end
+-----
+rofl
+.me
+$N $V $m
+.modifier
+on the floor laughing
+.verb
+roll
+.end
+-----
+roll/t
+.me
+$N $V $P eyes at $n
+.end
+-----
+roll
+.me
+$N $V $P eyes $M
+.modifier
+in amusement
+.end
+-----
+rust
+.me
+You sit and rust like the rear quarter-panel of a car in the junkyard.
+.others
+$N sits and rusts like the rear quarter-panel of a car in the junkyard.
+.end
+-----
+scream
+.me
+$N $V
+.end
+-----
+shake/t
+.me
+$N $m $V $g hand.
+.end
+-----
+shake
+.me
+You shake your head $M
+.others
+$N shakes $P head $M
+.modifier
+no
+.end
+-----
+sigh/t
+.me
+$N $V $m to $n.
+.end
+-----
+sigh
+.me
+You sigh $M
+.others
+$N sighs $M
+.end
+-----
+slap/t
+.me
+$N $V $n $m
+.modifier
+across the face
+.end
+-----
+slap
+.me
+$N $V $n $m
+.modifier
+across the face
+.end
+-----
+sleep
+.me
+$N $V asleep $m
+.modifier
+soundly
+.verb
+fall
+.end
+-----
+smack/t
+.me
+You smack $n upside the head with a 2x4.
+.others
+$n attempts to duck at the danger ahead... but...
+smaaaaaaaaaaaAAAAAAAAACK!
+$N just smacked $n upside the head with a 2x4!
+.target
+Uh oh!
+$N sneaks up behind you and smacks you in the head with a 2x4!
+Ouch that hurt!
+
+You feel a bit dizzy.
+.end
+-----
+smack
+.me
+You $V $m in shock!
+.others
+$N $V $m in shock!
+.modifier
+$G cheeks
+.end
+-----
+smirk/t
+.me
+$N $V at $n $m
+.modifier
+strangely
+.end
+-----
+smirk
+.me
+$N $V $m
+.modifier
+in amusement
+.end
+-----
+snicker/t
+.me
+$N $V at $n
+.end
+-----
+snicker
+.modifier
+evilly
+.end
+-----
+snore
+.me
+$N $V $m.
+.modifier
+loudly
+.end
+-----
+sorry
+.me
+$N go: SORRY!!
+.others
+$N goes: SORRY!!
+.end
+-----
+spin
+.me
+$N $V $m
+.modifier
+around in circles
+.end
+-----
+spit
+.me
+$N $V $m
+.modifier
+a bit of grey matter onto the ground
+.end
+-----
+stare/t
+.me
+$N $V $m at $n.
+.modifier
+dreamily
+.end
+-----
+stare
+.me
+$N $V $m into space.
+.modifier
+dreamily
+.end
+-----
+tackle/t
+.me
+$N $V $n!
+.end
+-----
+tackle
+.me
+$N tackles $n $M
+.others
+$N tackles $M.
+.end
+-----
+think
+.me
+$N . o O ( $m ) .
+.modifier
+hmmm...
+.end
+-----
+tickle/t
+.me
+$N $V $n $m
+.modifier
+incessantly
+.end
+-----
+wallop/t
+.me
+$N $V $n with an enormous hammer, stunning $s
+.verb
+wallop
+.end
+-----
+whisper/t
+.me
+$N whisper "$m" to $n
+.others
+$N whispers to $n
+.target
+$N whispers "$m" to $n
+.modifier
+sweet nothings
+.end
+-----
+woof
+.me
+You shake your fist and bark like a dog $m!
+.others
+$N shakes $P fist and barks like a dog $m!
+.end
+-----
+worship/t
+.me
+$N $V $n $M
+.others
+$N falls down and worships $n $M
+.target
+$N falls down on $P knees and worships you $M
+.end
+-----
+wow
+.me
+You wow at it all!
+.others
+$N wows at it all!
+.end
+-----
+yawn/t
+.me
+$N yawn in $n's face.
+.others
+$N yawns in $n's face.
+.target
+$N yawns in your face.
+.end
+-----
+yawn
+.me
+$N $V $m
+.end
+-----
+yipe
+.me
+You scream Yipe!
+.others
+$N screams Yipe! as loud as possible!
+.end
+-----
